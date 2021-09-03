@@ -1,2 +1,9 @@
 # Semi-Supervised-Self-Organizing-Fuzzy-Inference-System
-An Explainable Semi-Supervised Self-Organizing Fuzzy Inference System for Streaming Data Classification
+The MATLAB code for the research paper titled "An Explainable Semi-Supervised Self-Organizing Fuzzy Inference System for Streaming Data Classification".
+This work is described in:
+===============================================================================================================================
+Gu, X. (2021). An Explainable Semi-Supervised Self-Organizing Fuzzy Inference System for Streaming Data Classification. Information Sciences, Under review.
+===============================================================================================================================
+Please cite the paper above if this code helps. 
+Programmed by Xiaowei Gu. For any queries about the code, please contact Dr. Xiaowei Gu: X.Gu@kent.ac.uk
+Editable source code will be available soon
