@@ -59,7 +59,7 @@ for ii=1:1:numbatch0
     [~,seq]=sort(C1,2,'descend');
     C3=C2(seq);
     C3=C3(:,1:1:numlabel);
-    [label_est2,F]=mode(C3,2);
+    [~,F]=mode(C3,2);
     Idx=find(F>=(floor(numlabel/2)+1));
     pseduolabel(Idx)=label_est(Idx);
     pseudolabel10=pseduolabel(Idx);
