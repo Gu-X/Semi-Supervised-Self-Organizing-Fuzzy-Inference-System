@@ -48,7 +48,7 @@ for ii=1:1:numbatch0
     averdist=(averdist*Ldata+mean(dist00)*length(tempseq))/(Ldata+length(tempseq));
     Ldata=Ldata+length(tempseq);
     %%
-     [label_est,dist2]=testing(TrainedClassifier,data00,unilabel,numlabel);
+    [label_est,dist2]=testing(TrainedClassifier,data00,unilabel,numlabel);
     C=exp(-1*(dist2)./(2*averdist));
     C1=[];
     C2=[];
@@ -56,11 +56,18 @@ for ii=1:1:numbatch0
         C1=[C1,C(:,:,tt)];
         C2=[C2,ones(1,numlabel)*tt];
     end
-    [~,seq]=sort(C1,2,'descend');
-    C3=C2(seq);
-    C3=C3(:,1:1:numlabel);
-    [~,F]=mode(C3,2);
-    Idx=find(F>=(floor(numlabel/2)+1));
+    Idx=[];
+    for tt=1:1:LC
+        [~,seq]=sort(C1(tt,:),'descend');
+        C3=C2(seq);
+        C3=C3(1:1:numlabel);
+        [UD,x1,x2]=unique(C3);
+        F = histc(x2,1:numel(x1));
+        [x1,x2]=max(F);
+        if x1>=ceil((numlabel+0.1)/2)
+            Idx=[Idx;tt];
+        end
+    end
     pseduolabel(Idx)=label_est(Idx);
     pseudolabel10=pseduolabel(Idx);
     data10=data00(Idx,:);
